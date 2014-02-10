@@ -11,7 +11,7 @@ class RadioDNS_HDService(RadioDNS_Service):
     if type == 'drm' or type == 'amss':
       self.type = type
     else:
-      print 'Invalid type value. Must be either \'drm\' (Digital Radio Mondiale) or \'amss\' (AM Signalling System).'
+      print('Invalid type value. Must be either \'drm\' (Digital Radio Mondiale) or \'amss\' (AM Signalling System).')
       return None
     
     # SID
