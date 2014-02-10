@@ -42,14 +42,14 @@ class RadioDNS_DABService(RadioDNS_Service):
     # AppTy/UAtype
     if data:
       self.data = data
-      if xpad_pattern.match(data):
+      if data_pattern.match(data):
         self.xpad = self.data
         self.pa = None
       elif isinstance(data, int) and 0 >= self.data <= 1023:
         self.xpad = None
         self.pa = self.data
       else:
-        print 'Invalid data value. Must be either a valid X-PAD Applicaton Type (AppTy) and User Applicaton type (UAtype) hexadecimal or Packet Address integer.'
+        print('Invalid data value. Must be either a valid X-PAD Applicaton Type (AppTy) and User Applicaton type (UAtype) hexadecimal or Packet Address integer.')
         return None
     else:
       self.data = None  
@@ -59,8 +59,8 @@ class RadioDNS_DABService(RadioDNS_Service):
     fqdn = "%s.%s.%s.%s.dab.radiodns.org" % (self.scids, self.sid, self.eid, self.ecc)
     if self.data:
       if self.xpad:
-        fqdn = sprintf('%s.%s', self.xpad, fqdn)
+        fqdn = '{}.{}'.format(self.xpad, fqdn)
       elif self.pa:
-        fqdn = sprintf('%s.%s', self.pa, fqdn)
+        fqdn = '{}.{}'.format(self.pa, fqdn)
     fqdn = fqdn.lower()
     return fqdn
